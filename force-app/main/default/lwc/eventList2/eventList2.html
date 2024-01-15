@@ -1,0 +1,20 @@
+<!-- eventList.html -->
+<template>
+    <lightning-card title="Events List" icon-name="standard:events">
+        <div class="slds-p-around_medium">
+            <lightning-input
+                type="search"
+                label="Search Events"
+                value={searchTerm}
+                onchange={handleSearch}
+            ></lightning-input>
+        </div>
+        <div class="slds-p-around_medium">
+            <lightning-datatable
+                key-field="Id"
+                data={filteredEvents}
+                columns={columns}
+            ></lightning-datatable>
+        </div>
+    </lightning-card>
+</template>
