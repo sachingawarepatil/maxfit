@@ -1,22 +1,21 @@
-// eventList.js
 import { LightningElement, wire, track } from 'lwc';
-import getEvents from '@salesforce/apex/EventDetailsController2.getEvents';
-
+import retrieveAccounts from '@salesforce/apex/DataController.retrieveAccounts';
+ 
 const columns = [
-    { label: 'Event Name', fieldName: 'Name__c', type: 'text' },
-    { label: 'Start Date Time', fieldName: 'Start_DateTime__c', type: 'date' },
-    { label: 'End Date Time', fieldName: 'End_Date_Time__c', type: 'date' },
-    { label: 'Live?', fieldName: 'Live__c', type:'boolean' },
+    { label: 'Name', fieldName: 'Name' },
+    { label: 'Type', fieldName: 'Type' },
+   // { label: 'Email', fieldName: 'Email__c', type: 'email' },
+    { label: 'BillingCountry', fieldName: 'BillingCountry' },
 ];
-
-export default class EventList extends LightningElement {
+ 
+export default class LWCFilterSearchDatatable extends LightningElement {
     @track data;
     @track error;
     @track columns = columns;
     @track searchString;
     @track initialRecords;
  
-    @wire(getEvents)
+    @wire(retrieveAccounts)
     wiredAccount({ error, data }) {
         if (data) {
             console.log(data);
